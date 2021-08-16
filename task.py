@@ -31,9 +31,24 @@ class Task3(Task2):
         for key in info:
             string_to_return += f'<{key}>{info[key]}</{key}>'
         return '<li>'+string_to_return+'</li>'
+class Task4(Task3):
+    def json_to_html(self,if_req = None):
+        # print(list(map(print,json.load(self.input_file))))
+        if if_req:
+            return '<ul>'+''.join(list(map(self.data_prep, if_req)))+'</ul>'
+        else:
+            self.output_file.write('<ul>'+''.join(list(map(self.data_prep, json.load(self.input_file))))+'</ul>')
+    def data_prep(self, info: dict):
+        string_to_return = ''
+        for key in info:
+            if isinstance(info[key],list):
+                string_to_return += f'<{key}>{self.json_to_html(info[key])}</{key}>'
+            else:
+                string_to_return += f'<{key}>{info[key]}</{key}>'
+        return '<li>'+string_to_return+'</li>'
 
 
 
 if __name__ == '__main__':
-    print(Task3().json_to_html())
+    print(Task4().json_to_html())
 
