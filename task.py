@@ -23,9 +23,17 @@ class Task2(Task1):
         for key in info:
             string_to_return += f'<{key}>{info[key]}</{key}>'
         return string_to_return
+class Task3(Task2):
+    def json_to_html(self):
+        self.output_file.write('<ul>'+''.join(list(map(self.data_prep, json.load(self.input_file))))+'</ul>')
+    def data_prep(self, info: dict):
+        string_to_return = ''
+        for key in info:
+            string_to_return += f'<{key}>{info[key]}</{key}>'
+        return '<li>'+string_to_return+'</li>'
 
 
 
 if __name__ == '__main__':
-    print(Task2().json_to_html())
+    print(Task3().json_to_html())
 
