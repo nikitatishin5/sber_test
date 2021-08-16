@@ -1,10 +1,10 @@
 [
   {
-    "title": "Title #1",
-    "body": "Hello world 1!"
+    "d4": "Title #1",
+    "tag1": "Hello world 1!"
   },
   {
-    "title": "Title #2",
-    "body": "Hello world 2!"
+    "d5": "Title #2",
+    "tag6": "Hello world 2!"
   }
 ]
